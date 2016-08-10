@@ -13,33 +13,33 @@
 /*
 * The following functions have been implemented:
 *
-* 1) getNode(): 										return type struct link *.
+* 1) getNode(): 								return type struct link *.
 * 2) putData(struct link *node): 						return type void.
-* 3) Continue(): 										return type int.
+* 3) Continue(): 								return type int.
 * 4) display(struct link *node): 						return type void.
 * 5) len(struct link *node): 							return type int.
 * 6) pop(struct link *head): 							return type struct link *.
-* 7) append(struct link *head, int data): 				return type struct link *.
-* 8) indexOf(struct link *head, int n): 				return type int.
-* 9) inList(struct link *head, int n):					return type int.
-* 10) data_in(struct link *head, int pos): 				return type int.
+* 7) append(struct link *head, int data): 					return type struct link *.
+* 8) indexOf(struct link *head, int n): 					return type int.
+* 9) inList(struct link *head, int n):						return type int.
+* 10) data_in(struct link *head, int pos): 					return type int.
 * 11) clone(struct link *head): 						return type struct link *.
-* 12) sublist(struct link *head, int lb, int ub): 		return type struct link *.
+* 12) sublist(struct link *head, int lb, int ub): 				return type struct link *.
 * 13) sort(struct link *head): 							return type void.
 * 14) sorted(struct link *head):						return type struct link *.
 * 15) reverse(struct link *head): 						return type struct link *.
-* 16) insert(struct link *head, int data, int pos): 	return type struct link *.
-* 17) delete(struct link *head, int pos):				return type struct link *.
-* 18) concat(struct link *l1, struct link *l2):			return type struct link *.
-* 19) newList():										return type struct link *.
+* 16) insert(struct link *head, int data, int pos): 				return type struct link *.
+* 17) delete(struct link *head, int pos):					return type struct link *.
+* 18) concat(struct link *l1, struct link *l2):					return type struct link *.
+* 19) newList():								return type struct link *.
 * 20) sum(struct link *head):							return type int.
 * 21) max(struct link *head):							return type int.
 * 22) min(struct link *head):							return type int.
-* 23) count(struct link *head, int n):					return type int.
-* 24) equal(struct link *l1, struct link *l2):			return type int.
+* 23) count(struct link *head, int n):						return type int.
+* 24) equal(struct link *l1, struct link *l2):					return type int.
 * 25) set(struct link *head):							return type struct link *.
-* 26) intersect(struct link *l1, struct link *l2):		return type struct link *.
-* 27) Union(struct link *l1, struct link *l2):			return type struct link *.
+* 26) intersect(struct link *l1, struct link *l2):				return type struct link *.
+* 27) Union(struct link *l1, struct link *l2):					return type struct link *.
 *
 * More functions may get added as required.
 *
