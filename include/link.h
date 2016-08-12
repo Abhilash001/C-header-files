@@ -18,8 +18,8 @@
 * 3) Continue(): 								return type int.
 * 4) display(struct link *node): 						return type void.
 * 5) len(struct link *node): 							return type int.
-* 6) pop(struct link *head): 							return type struct link *.
-* 7) append(struct link *head, int data): 					return type struct link *.
+* 6) pop(struct link *head): 							return type void.
+* 7) append(struct link *head, int data): 					return type void.
 * 8) indexOf(struct link *head, int n): 					return type int.
 * 9) inList(struct link *head, int n):						return type int.
 * 10) data_in(struct link *head, int pos): 					return type int.
@@ -28,18 +28,19 @@
 * 13) sort(struct link *head): 							return type void.
 * 14) sorted(struct link *head):						return type struct link *.
 * 15) reverse(struct link *head): 						return type struct link *.
-* 16) insert(struct link *head, int data, int pos): 				return type struct link *.
-* 17) delete(struct link *head, int pos):					return type struct link *.
+* 16) insert(struct link *head, int data, int pos): 				return type void.
+* 17) delete(struct link *head, int pos):					return type void.
 * 18) concat(struct link *l1, struct link *l2):					return type struct link *.
-* 19) newList():								return type struct link *.
-* 20) sum(struct link *head):							return type int.
-* 21) max(struct link *head):							return type int.
-* 22) min(struct link *head):							return type int.
-* 23) count(struct link *head, int n):						return type int.
-* 24) equal(struct link *l1, struct link *l2):					return type int.
-* 25) set(struct link *head):							return type struct link *.
-* 26) intersect(struct link *l1, struct link *l2):				return type struct link *.
-* 27) Union(struct link *l1, struct link *l2):					return type struct link *.
+* 19) getInput():								return type struct link *.
+* 20) newList(char *s):								return type struct link *.
+* 21) sum(struct link *head):							return type int.
+* 22) max(struct link *head):							return type int.
+* 23) min(struct link *head):							return type int.
+* 24) count(struct link *head, int n):						return type int.
+* 25) equal(struct link *l1, struct link *l2):					return type int.
+* 26) set(struct link *head):							return type struct link *.
+* 27) intersect(struct link *l1, struct link *l2):				return type struct link *.
+* 28) Union(struct link *l1, struct link *l2):					return type struct link *.
 *
 * More functions may get added as required.
 *
@@ -47,6 +48,7 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 
 /*
 * Linked list structure containing data and next node.
@@ -118,19 +120,20 @@ int len(struct link *node)
 /*
 * Deletes the last node of the list.
 */
-struct link *pop(struct link *head)
+void pop(struct link **head)
 {
-	if(head!=NULL)
+	if((*head)!=NULL)
 	{
-		struct link *temp = head;
+		struct link *temp;
 		struct link *t;
-		if(head->next==NULL)
+		if((*head)->next==NULL)
 		{
-			free(head);
-			head = NULL;
+			free((*head));
+			(*head) = NULL;
 		}
 		else
 		{
+			temp = *head;
 			while(temp->next!=NULL)
 			{
 				t = temp;
@@ -140,19 +143,18 @@ struct link *pop(struct link *head)
 			t->next = NULL; 
 		}
 	}
-	return head;
 }
 
 /*
 * Inserts data at the end of the list.
 */
-struct link *append(struct link *head, int data)
+void append(struct link **head, int data)
 {
-	struct link *node = head;
-	if(head==NULL)
+	struct link *node = *head;
+	if((*head)==NULL)
 	{
-		head = getNode();
-		node = head;
+		(*head) = getNode();
+		node = (*head);
 	}
 	else
 	{
@@ -162,7 +164,6 @@ struct link *append(struct link *head, int data)
 	}
 	node->data = data;
 	node->next = NULL;
-	return head;
 }
 
 /*
@@ -318,13 +319,13 @@ struct link *reverse(struct link *head)
 * Inserts data at specific given position pos.
 * Inserts at end if pos exceeds length of list.
 */
-struct link *insert(struct link *head, int data, int pos)
+void insert(struct link **head, int data, int pos)
 {
-	struct link *node = head, *temp = NULL;
-	if(head==NULL)
+	struct link *node = *head, *temp = NULL;
+	if((*head)==NULL)
 	{
-		head = getNode();
-		node = head;
+		(*head) = getNode();
+		node = (*head);
 		node->next = NULL;
 	}
 	else if(pos!=0)
@@ -338,28 +339,27 @@ struct link *insert(struct link *head, int data, int pos)
 	}
 	else
 	{
-		head = getNode();
-		head->next = node;
-		node = head;
+		(*head) = getNode();
+		(*head)->next = node;
+		node = (*head);
 	}
 	node->data = data;
-	return head;
 }
 
 /*
 * Deletes node at specific given position pos.
 * Deletes last node if pos exceeds length of list.
 */
-struct link *delete(struct link *head, int pos)
+void delete(struct link **head, int pos)
 {
-	if(head!=NULL)
+	if((*head)!=NULL)
 	{
-		struct link *temp = head;
+		struct link *temp = *head;
 		struct link *t;
-		if(head->next==NULL)
+		if((*head)->next==NULL)
 		{
-			free(head);
-			head = NULL;
+			free((*head));
+			(*head) = NULL;
 		}
 		else if(pos!=0)
 		{
@@ -375,12 +375,11 @@ struct link *delete(struct link *head, int pos)
 		}
 		else
 		{
-			head = head->next;
+			(*head) = (*head)->next;
 			free(temp);
 			temp = NULL;
 		}
 	}
-	return head;
 }
 
 /*
@@ -408,10 +407,10 @@ struct link *concat(struct link *l1, struct link* l2)
 }
 
 /*
-* Returns an allocated memory to be used as root(start) node and adds nodes to list as required by user.
+* Returns an allocated memory to be used as start node and adds nodes to list as required by user.
 * Simply put, creates and returns a new list with user inputted data.
 */
-struct link *newList()
+struct link *getInput()
 {
 	struct link *head = getNode();
 	int i = 0;
@@ -425,6 +424,33 @@ struct link *newList()
 		node->next = getNode();
 		node = node->next;
 		putdata(node);
+	}
+	return head;
+}
+
+/*
+* Returns an allocated memory to be used as start node and adds nodes to list with data given in string s
+* Simply put, creates and returns a new list with the integers in string s.
+*/
+struct link *newList(char *s)
+{
+	struct link *head = NULL;
+	if(strlen(s)!=0)
+	{
+		int data, offset;
+		head = getNode();
+		sscanf(s, "%d %n", &data, &offset);
+		head->data = data;
+		s+=offset;
+		struct link *node;
+		node = head;
+		while(sscanf(s, "%d %n", &data, &offset)==1)
+		{
+			node->next = getNode();
+			node = node->next;
+			node->data = data;
+			s+=offset;
+		}
 	}
 	return head;
 }
@@ -515,8 +541,8 @@ struct link *set(struct link *head)
 	while(temp!=NULL)
 	{
 		while(inList(sublist(temp, i+1, j), temp->data))
-			temp = delete(temp, indexOf(sublist(temp, i+1, j), temp->data)+i+1);
-		no_repeat = append(no_repeat, temp->data);
+			delete(&temp, indexOf(sublist(temp, i+1, j), temp->data)+i+1);
+		append(&no_repeat, temp->data);
 		temp = temp->next;
 		i++;
 	}
@@ -533,7 +559,7 @@ struct link *intersect(struct link *l1, struct link *l2)
 	while(temp!=NULL)
 	{
 		if(inList(l2, temp->data))
-			inter = append(inter, temp->data);
+			append(&inter, temp->data);
 		temp = temp->next;
 	}
 	return inter;
@@ -549,7 +575,7 @@ struct link *Union(struct link *l1, struct link *l2)
 	struct link *inter = intersect(temp, temp2);
 	while(inter!=NULL)
 	{
-		temp2 = delete(temp2, indexOf(temp2, inter->data));
+		delete(&temp2, indexOf(temp2, inter->data));
 		inter = inter->next;
 	}
 	un = concat(temp, temp2);
