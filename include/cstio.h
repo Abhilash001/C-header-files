@@ -12,9 +12,9 @@
 /*
 * The following functions have been implemented:
 *
-* 1) input(char *s):										return type string.
+* 1) input(char *s):							return type string.
 * 2) arrinput(char *s, const char *cs int sz):				return type depls on control string cs.
-* 4) arrprint(char *s, const char *cs int *a, int sz):		return type void.
+* 4) arrprint(char *s, const char *cs int *a, int sz):			return type void.
 *
 * Additional definitions for use:
 * 1) Int(x): can be used to convert string returned by input() to integer.
