@@ -11,7 +11,7 @@
 #define CSTIO_H_
 /*
 * The following functions have been implemented:
-*
+* 
 * 1) input(char *s):										return type string.
 * 2) arrinput(char *s, const char *cs int sz):				return type depls on control string cs.
 * 4) arrprint(char *s, const char *cs int *a, int sz):		return type void.
