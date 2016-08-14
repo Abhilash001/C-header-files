@@ -537,14 +537,13 @@ int equal(struct link *l1, struct link *l2)
 struct link *set(struct link *head)
 {
 	struct link *no_repeat = NULL, *temp = clone(head);
-	int i = 0, j = len(temp);
+	int j = len(temp);
 	while(temp!=NULL)
 	{
-		while(inList(sublist(temp, i+1, j), temp->data))
-			delete(&temp, indexOf(sublist(temp, i+1, j), temp->data)+i+1);
+		while(inList(sublist(temp, 1, j), temp->data))
+			delete(&temp, indexOf(sublist(temp, 1, j), temp->data)+1);
 		append(&no_repeat, temp->data);
-		temp = temp->next;
-		i++;
+		temp = sublist(temp, 1, j);
 	}
 	return no_repeat;
 }
@@ -571,15 +570,8 @@ struct link *intersect(struct link *l1, struct link *l2)
 */
 struct link *Union(struct link *l1, struct link *l2)
 {
-	struct link *un, *temp = set(l1), *temp2 = set(l2);
-	struct link *inter = intersect(temp, temp2);
-	while(inter!=NULL)
-	{
-		delete(&temp2, indexOf(temp2, inter->data));
-		inter = inter->next;
-	}
-	un = concat(temp, temp2);
-	return un;
+	struct link *un = concat(l1, l2);
+	return set(un);
 }
 
 #endif
