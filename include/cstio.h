@@ -72,7 +72,7 @@ char *input(char *s)
 * to return an array of required datatype and size, along with user input.
 * Eg:-
 * int *a = arrinput("Enter array: ", "%d", 5); will print the given string, take 5 integers as input from user
-* 											   and return the array of 5 integers.
+* 						and return the array of 5 integers.
 * For float, use control string "%f".
 * Different forms of control string can also be passed, like "%2d", "%.3f", etc.
 *
@@ -102,7 +102,7 @@ void *arrinput(char *s, char *cnstr, int sz)
 * to print the given array.
 * Eg:-
 * arrprint("The array is: \n", "%d", a, 5); will first print the given string, then print the given integer
-* 											array of size 5. Each integer will be separated be space.
+* 					    array of size 5. Each integer will be separated be space.
 * For float, use control string "%f".
 * Different forms of control string can also be passed, like "%2d", "%.3f", etc.
 *
