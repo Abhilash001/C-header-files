@@ -11,7 +11,7 @@
 #define CSTIO_H_
 /*
 * The following functions have been implemented:
-* 
+*
 * 1) input(char *s):										return type string.
 * 2) arrinput(char *s, const char *cs int sz):				return type depls on control string cs.
 * 4) arrprint(char *s, const char *cs int *a, int sz):		return type void.
@@ -34,7 +34,7 @@
 * For removing leading and trailing whitespaces in strings. Here, it has been used for trimming control strings.
 * Custom created for internal use only.
 */
-size_t trim(char *s, const char *s2)
+size_t trim(char *s, char *s2)
 {
   char *l;
   size_t ans;
@@ -63,7 +63,7 @@ char *input(char *s)
 {
 	printf("%s", s);
 	char *n = (char *)malloc(1000*sizeof(char));
-	gets(n);
+	fgets(n, 1000, stdin);
 	return n;
 }
 
