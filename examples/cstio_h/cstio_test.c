@@ -1,7 +1,7 @@
 /*
 * Test all functions of cstio.h file.
 */
-#include <cstio.h>
+#include "cstio.h"
 
 void main()
 {
@@ -15,8 +15,8 @@ void main()
 	float *b = arrinput("Enter 5 float no.s: ", " %f", 5); // test for float array input
 
 	printf("n = %d\nf = %f\ns : %s\n", n, f, s);
-	arrprint("a[] array is: \n", "  %d ", a, 5); // test for integer array print
-	arrprint("b[] array is: \n", "%.2f", b, 5); // test for float array print
+	print_array("a[] array is: \n", "  %d ", a, 5); // test for integer array print
+	print_array("b[] array is: \n", "%.2f", b, 5); // test for float array print
 }
 
 /* Output:
