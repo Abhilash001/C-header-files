@@ -34,6 +34,14 @@
 * 3) max(any number of integers, separated by ','):     finds maximum of integers, return type int.
 * 4) sum(any number of integers, separated by ','):     finds sum     of integers, return type int.
 * 5) average(any number of integers, separated by ','): finds average of integers, return type float.
+* 6) in : checks whether a number is in the Array provided. Syntax is as follows:-
+*    if in <array_name> of size <array_size>, <value> _then
+*        <some codes to execute>
+*    END
+*    Example:-
+*    if in arr of size 10, 4 _then
+*        print "Search successful!" done
+*    END
 * 
 */
 
@@ -42,17 +50,24 @@
 #include "cstio.h"
 
 /*
-* Renamed functions of cstio.h header file
+* Renamed functions of cstio.h header file for simpler code. Previous names can still be used.
 */
 
-#define input_array arrinput
-#define integer_input(x) Int(input(x))
-#define decimal_input(x) Float(input(x))
+#define input_array(x, y, z) arrinput(x, y, z);
+#define Input_array(z)       arrinput("", "%d", z);
+#define integer_input(x)     Int(input(x));
+#define decimal_input(x)     Float(input(x));
+#define Integer_input        Int(input(""));
+#define Decimal_input        Float(input(""));
+#define print_array(x, y, z, w) print_array(x , y, z, w);
 
 /*
 * Macros for Algorithmic syntax
 */
 
+#define BOOLEAN int
+#define TRUE 1
+#define FALSE 0
 #define and &&
 #define or ||
 #define not !
@@ -60,19 +75,27 @@
 #define isnot !=
 #define less_than <
 #define greater_than >
+#define equals =
+#define AND &
+#define OR |
+#define xor ^
+#define mod %
 #define set_to =
 #define also ,
-#define Initialize {}
-#define newline printf("\n")
+#define of ,
+#define size 
+#define Initialize 
+#define newline printf("\n");
 #define START int main(void){
 #define END }
 #define Then {
 #define Increment ++
 #define Decrement --
-#define to_add +=
-#define to_sub -=
-#define to_multiply *=
-#define to_divide /=
+#define To
+#define add +=
+#define sub -=
+#define multiply *=
+#define divide /=
 #define integer int
 #define decimal float
 #define int_array int *
@@ -81,7 +104,8 @@
 #define String char *
 #define if if(
 #define then ){
-#define While while(
+#define _then )){
+#define while while(
 #define done );
 #define print printf(
 #define Do )
@@ -91,11 +115,13 @@
 * Functions for ease of code
 */
 
-#define swap(x, y) ({(x) ^= (y); (y) ^= (x); (x) ^= (y);})
+#define __swap__(x, y) ({(x) ^= (y); (y) ^= (x); (x) ^= (y);})
+#define swap(x, y) __swap__(x, y);
 #define min(...) int_functions(1, __VA_ARGS__, -12345)
 #define max(...) int_functions(2, __VA_ARGS__, -12345)
 #define sum(...) int_functions(3, __VA_ARGS__, -12345)
 #define average(...) float_functions(1, __VA_ARGS__, -12345)
+#define in isin(
 
 
 /*
@@ -164,6 +190,18 @@ float float_functions(int n, ...)
 	END
 	return ans;
 	va_end(valist);
+}
+
+BOOLEAN isin(int *a, int n, int v)
+{
+	int i;
+	for(i=0; i<n; i++)
+	{
+		if a[i] is v then 
+			return i;
+		END
+	}
+	return FALSE;
 }
 
 #endif
